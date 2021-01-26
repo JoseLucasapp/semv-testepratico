@@ -1,0 +1,31 @@
+{
+  "name": "semv-testepratico-backend",
+  "version": "1.0.0",
+  "description": "teste pratico para vaga de desenvolvedor na semv",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/JoseLucasapp/semv-testepratico-backend.git"
+  },
+  "keywords": [
+    "nodejs",
+    "javascript"
+  ],
+  "author": "José Lucas <josluc2016@gmail.com>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/JoseLucasapp/semv-testepratico-backend/issues"
+  },
+  "homepage": "https://github.com/JoseLucasapp/semv-testepratico-backend#readme",
+  "dependencies": {
+    "body-parser": "^1.19.0",
+    "consign": "^0.1.6",
+    "cors": "^2.8.5",
+    "express": "^4.17.1",
+    "express-validator": "^6.9.2",
+    "mongoose": "^5.11.13"
+  }
+}
