@@ -1,7 +1,7 @@
 const mongoose = require('mongoose');
 const schema = mongoose.Schema;
 
-const MongoDB_URL = process.env.MongoDB_URL || "mongodb://localhost:27017/teste";
+const MongoDB_URL = process.env.MongoDB_URL || "mongodb://localhost:27017/semvteste";
 mongoose.connect(MongoDB_URL,{
     useNewUrlParser: true,
     useUnifiedTopology: true
@@ -13,7 +13,12 @@ const clientes = new schema({
         type: Number
     },
     tipopessoa:{
-        type: Number
+        id_tipo:{
+            type: Number
+        },
+        descricao_tipo:{
+            type: String
+        }
     },
     cpf_cnpj:{
         type: String
@@ -40,16 +45,7 @@ const clientes = new schema({
         type: String
     }
 });
-const tipo_pessoa = new schema({
-    id_tipo:{
-        type: Number
-    },
-    descricao_tipo:{
-        type: String
-    }
-});
 
 const Clientes = mongoose.model('clientes', clientes);
-const Tipo_pessoa = mongoose.model('tipo_pessoa', tipo_pessoa);
 
-module.exports = {Clientes, Tipo_pessoa};
+module.exports = {Clientes};
