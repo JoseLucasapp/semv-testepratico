@@ -8,4 +8,7 @@ module.exports = (route)=>{
     route.get('/newclient', (req, res)=>{
         route.app.controllers.index.newClientPage(route, req, res);
     });
+    route.post('/edit', (req, res)=>{
+        route.app.controllers.index.editClientPage(route, req, res);
+    })
 }

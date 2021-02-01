@@ -10,6 +10,10 @@ module.exports.newClientPage = (route, req, res)=>{
     const newClientPage = new route.app.models.GetInfoDAO();
     newClientPage.newClientPage(req, res);
 }
+module.exports.editClientPage = (route, req, res)=>{
+    const editClientPage = new route.app.models.GetInfoDAO();
+    editClientPage.editClientPage(req, res);
+}
 module.exports.postInfo = (route, req, res)=>{
     const postInfo = new route.app.models.PostInfoDAO();
     postInfo.data(req, res);

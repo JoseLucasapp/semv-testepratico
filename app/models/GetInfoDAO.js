@@ -29,6 +29,9 @@ GetInfoDAO.prototype.dataFilter = (req, res)=>{
 GetInfoDAO.prototype.newClientPage = (req, res)=>{
     res.render('newClient.ejs');
 }
+GetInfoDAO.prototype.editClientPage = (req, res)=>{
+    res.render('edit.ejs', {data : req.body});
+}
 
 module.exports = ()=>{
     return GetInfoDAO;

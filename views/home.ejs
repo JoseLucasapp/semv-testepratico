@@ -5,13 +5,13 @@
         <link rel="stylesheet" type="text/css" href="style/home.css" >
     </head>
     <body>
-        <div>
+        <div class="geral">
             <div class="topo">
                 <a href="/newClient"><button>cadastro</button></a>
             </div>
             <div class="busca">
                 <form action="/filter" method="post">
-                    <input minlength="2" id="uf" maxlength="14" name="uf" placeholder="uf"/>
+                    <input minlength="2" id="uf" maxlength="2" name="uf" placeholder="uf"/>
                     <input minlength="14" id="cpf_cnpj" maxlength="14" name="cpf_cnpj" placeholder="cpf ou cnpj" />
                     <input name="cep" id="cep" minlength="8" maxlength="8" placeholder="cep" />
                     <button id="btn_filter" disabled>Ok</button>
@@ -21,7 +21,24 @@
             <div class="clientes">
                 <ul>
                     <%for(let i =0; i< data.length; i++){%>
-                        <li><%= data[i]%><form action="/delete" method="post"><input name="id" type="hidden" value="<%=data[i].id%>"><button>X</button></form></li>
+                        <li><%= data[i]%>
+                            <form action="/edit" method="post">
+                                <input name="id" type="hidden" value="<%=data[i].id%>">
+                                <input name="nome" type="hidden" value="<%=data[i].nome%>">
+                                <input name="cpf_cnpj" type="hidden" value="<%=data[i].cpf_cnpj%>">
+                                <input name="cep" type="hidden" value="<%=data[i].cep%>">
+                                <input name="endereco" type="hidden" value="<%=data[i].endereco%>">
+                                <input name="nro_logradouro" type="hidden" value="<%=data[i].nro_logradouro%>">
+                                <input name="bairro" type="hidden" value="<%=data[i].bairro%>">
+                                <input name="cidade" type="hidden" value="<%=data[i].cidade%>">
+                                <input name="uf" type="hidden" value="<%=data[i].uf%>">
+                                <button>edit</button>
+                            </form>
+                            <form action="/delete" method="post">
+                                <input name="id" type="hidden" value="<%=data[i].id%>">
+                                <button>X</button>
+                            </form>
+                        </li>
                     <%}%>
                 </ul>
             </div>

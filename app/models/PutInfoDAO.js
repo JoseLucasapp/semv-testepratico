@@ -1,16 +1,23 @@
-const {Clientes} = require('../../config/dbConnection');
+const Data = require('../../config/dbConnection');
+const cliente = Data.Clientes;
 
 function PutInfoDAO(){
 
 }
 
 PutInfoDAO.prototype.data = (req, res)=>{
-    Clientes.findOneAndUpdate({ id: req.params.id }
-        , {$set: req.body}).exec((err)=>{
+    cliente.findOneAndUpdate({ id: req.body.id }
+        , {$set: req.body}, {upsert : true}).exec((err)=>{
             if(err){
-                res.json(err);
+                res.render("home.ejs", {data: "", errors: err});
             }else{
-                res.json("Success");
+                cliente.find({}).exec((err, data)=>{
+                    if(err){
+                        res.render("home.ejs", {data: "", errors: err});
+                    }else{
+                        res.render("home.ejs", {data: data, errors: ""});
+                    }
+                });
             }
         });
 }
