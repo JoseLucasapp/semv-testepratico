@@ -14,22 +14,26 @@ PostInfoDAO.prototype.data = (req, res)=>{
         const data = req.body;
         const clientes = new Clientes({
             id: idGenerator,
-            tipopessoa: {
-                id_tipo: idGenerator,
-                descricao_tipo: data.descricao_tipo
-            },
+            descricao_tipo: data.descricao_tipo.toLowerCase(),
             cpf_cnpj: data.cpf_cnpj,
             nome: data.nome,
-            endereco: data.endereco,
-            nro_logradouro: data.nro_logradouro,
-            bairro: data.bairro,
-            cidade: data.cidade,
-            uf: data.uf,
+            endereco: data.endereco.toLowerCase(),
+            nro_logradouro: data.nro_logradouro.toLowerCase(),
+            bairro: data.bairro.toLowerCase(),
+            cidade: data.cidade.toLowerCase(),
+            uf: data.uf.toLowerCase(),
             cep: data.cep,
         }).save().then(()=>{
-            return res.status(200).json({response: 'Sucess'});
+            window.location.href = '/';
+            cliente.find({}).exec((err, data)=>{
+                if(err){
+                    res.render("home.ejs", {data: "", errors: err});
+                }else{
+                    res.render("home.ejs", {data: data, errors: ""});
+                }
+            });
         }).catch((err)=>{
-            res.json(err);
+            res.render("home.ejs", {data: "", errors: err});
         });
     }
 }

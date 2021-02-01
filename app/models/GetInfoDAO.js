@@ -1,6 +1,5 @@
 const Data = require('../../config/dbConnection');
 const cliente = Data.Clientes;
-const tipoPessoa = Data.Tipo_pessoa;
 
 function GetInfoDAO(){
 
@@ -9,11 +8,26 @@ function GetInfoDAO(){
 GetInfoDAO.prototype.data = (req, res)=>{
     cliente.find({}).exec((err, data)=>{
         if(err){
-            res.json(err);
+            res.render("home.ejs", {data: "", errors: err});
         }else{
-            res.json(data);
+            res.render("home.ejs", {data: data, errors: ""});
         }
     });
+}
+
+GetInfoDAO.prototype.dataFilter = (req, res)=>{
+    
+    cliente.find(req.body).exec((err,data)=>{
+        if(err){
+            res.render("home.ejs", {data: "", errors: err});
+        }else{
+            res.render("home.ejs", {data: data, errors: ""});
+        }
+    })
+}
+
+GetInfoDAO.prototype.newClientPage = (req, res)=>{
+    res.render('newClient.ejs');
 }
 
 module.exports = ()=>{

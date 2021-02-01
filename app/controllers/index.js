@@ -2,6 +2,14 @@ module.exports.getInfo = (route, req, res)=>{
     const getInfo = new route.app.models.GetInfoDAO();
     getInfo.data(req, res);
 }
+module.exports.getInfoWithFilter = (route, req, res)=>{
+    const getInfoWithFilter = new route.app.models.GetInfoDAO();
+    getInfoWithFilter.dataFilter(req, res);
+}
+module.exports.newClientPage = (route, req, res)=>{
+    const newClientPage = new route.app.models.GetInfoDAO();
+    newClientPage.newClientPage(req, res);
+}
 module.exports.postInfo = (route, req, res)=>{
     const postInfo = new route.app.models.PostInfoDAO();
     postInfo.data(req, res);

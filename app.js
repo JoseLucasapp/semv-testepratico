@@ -1,14 +1,15 @@
 const express = require('express');
 const consign = require('consign');
 const bodyParser = require('body-parser');
-const cors = require('cors');
+const ejs = require('ejs')
 
 const app = express();
-const PORT = process.env.PORT || 3000;
+const PORT = process.env.PORT || 8080;
 
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
-app.use(cors());
+app.set('view engine', ejs);
+app.use(express.static('./public/'));
 
 consign()
     .include('app/controllers')
