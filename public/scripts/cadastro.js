@@ -7,32 +7,12 @@ let descricao_tipo = document.querySelector('#descricao_tipo');
 let btn_filter = document.getElementById('btn_cadastrar');
 
 const desbloquear = ()=>{
-    if(nome.value.length > 5 && cep.value.length == 8 && uf.value.length == 2 && cpf_cnpj.value.length >= 11 && cpf_cnpj.value.length <= 14){
-        if(cpf_cnpj.value.length == 14){
-            descricao_tipo.value = 'cnpj';
-            btn_filter.disabled = false;
-            nome.style.border = "1px solid green"; 
-            cep.style.border = "1px solid green";
-            cpf_cnpj.style.border = "1px solid green";
-            uf.style.border = "1px solid green";
-            cep.title = "Preenchido corretamente";
-            cpf_cnpj.title = "Preenchido corretamente";
-        }else if(cpf_cnpj.value.length == 11){
-            descricao_tipo.value = 'cpf';
-            btn_filter.disabled = false;
-            nome.style.border = "1px solid green"; 
-            cep.style.border = "1px solid green";
-            cpf_cnpj.style.border = "1px solid green";
-            uf.style.border = "1px solid green";
-            cep.title = "Preenchido corretamente";
-            cpf_cnpj.title = "Preenchido corretamente";
-        }else{
-            btn_filter.disabled = true;
-            cep.style.border = "1px solid red";
-            cpf_cnpj.style.border = "1px solid red";
-            uf.style.border = "1px solid red";
-            nome.style.border = "1px solid red"; 
-        }
+    if(cpf_cnpj.value.length == 14){
+        descricao_tipo.value = 'cnpj';
+        cpf_cnpj.style.border = "1px solid green";
+    }else if(cpf_cnpj.value.length == 11){
+        descricao_tipo.value = 'cpf';
+        cpf_cnpj.style.border = "1px solid green";
     }else{
         btn_filter.disabled = true;
         cep.style.border = "1px solid red";
@@ -40,6 +20,26 @@ const desbloquear = ()=>{
         uf.style.border = "1px solid red";
         nome.style.border = "1px solid red"; 
     }
+    if(nome.value.length > 5){
+        nome.style.border = "1px solid green";
+    }else{
+        nome.style.border = "1px solid red";
+    }
+    if(cep.value.length == 8){
+        cep.style.border = "1px solid green";
+    }else{
+        cep.style.border = "1px solid red";
+    }
+    if(uf.value.length == 2){
+        uf.style.border = "1px solid green";
+    }else{
+        uf.style.border = "1px solid red";
+    }
+    if(nome.value.length > 5 && cep.value.length == 8 && uf.value.length == 2 && cpf_cnpj.value.length >= 11 && cpf_cnpj.value.length <= 14){
+        btn_filter.disabled = false;
+    }else{
+        btn_filter.disabled = true;
+    } 
 }
 const bloquear = ()=>{
     btn_filter.disabled = true;
@@ -50,7 +50,7 @@ cep.addEventListener('blur', desbloquear, false);
 uf.addEventListener('blur', desbloquear, false);
 cpf_cnpj.addEventListener('blur', desbloquear, false);
 
-nome.addEventListener('blur', bloquear, false);
+nome.addEventListener('focus', bloquear, false);
 cep.addEventListener('focus', bloquear, false);
 uf.addEventListener('focus', bloquear, false);
 cpf_cnpj.addEventListener('focus', bloquear, false);
