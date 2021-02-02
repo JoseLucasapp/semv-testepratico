@@ -1,0 +1,43 @@
+<html>
+    <head>
+        <title>newClient</title>
+        <meta charset="utf-8">
+        <link rel="stylesheet" type="text/css" href="style/cadastro.css" >
+    </head>
+    <body>
+        <div class="geral">
+            <div id="campo_ajuda" class="ajuda">
+                <h2>AJUDA</h2><br />
+                <p>Os Campos NOME, CPF/CNPJ, CEP e UF são obrigatórios</p>
+                <p>O campo NOME deve conter no mínimo 5 letras</p>
+                <p>O campo CEP deve conter 8 números</p>
+                <p>O campo CPF/CNPJ deve conter 11(cpf) ou 14(cnpj) números</p>
+                <p>O campo UF deve conter a sigla do estado, ex: PB, SC, SP</p>
+                <button id="fechar">Fechar Ajuda</button>
+            </div>
+            <div class="cadastro">
+                <form action="/new" method="POST">
+                    <br /><label for="nome">Nome</label><br />
+                    <input title="campo obrigatório" minlength="5" maxlength="50" id="nome" name="nome" placeholder="nome"><br />
+                    <br /><label>Dados</label><br />
+                    <select id="descricao_tipo" name="descricao_tipo">
+                        <option>cpf</option>
+                        <option>cnpj</option>
+                    </select>
+                    <input title="campo obrigatório" type="number" maxlength="14" id="cpf_cnpj" name="cpf_cnpj" placeholder="cpf_cnpj"><br />
+                    <br /><label>Endereço</label><br />
+                    <input title="campo obrigatório" id="cep" type="number" maxlength="8" name="cep" placeholder="cep"><br />
+                    <input id="endereco" minlength="5" maxlength="50" name="endereco" placeholder="endereco"><br />
+                    <input id="nro_logradouro" minlength="1" maxlength="10" name="nro_logradouro" placeholder="logradouro"><br />
+                    <input id="bairro" minlength="1" maxlength="30" name="bairro" placeholder="bairro"><br />
+                    <input id="cidade" minlength="1" maxlength="50" name="cidade" placeholder="cidade"><br />
+                    <input title="campo obrigatório" id="uf" minlength="1" maxlength="2" name="uf" placeholder="estado"><br />
+                    <button id="btn_cadastrar" disabled>Cadastrar</button>
+                </form>
+                <a href="/"><button id="btn_cancelar">Cancelar</button></a>
+                <button id="btn_ajuda">Ajuda</button>
+            </div>
+        </div>
+        <script src="/scripts/cadastro.js"></script>
+    </body>
+</html>

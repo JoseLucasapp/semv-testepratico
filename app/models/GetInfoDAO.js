@@ -27,10 +27,10 @@ GetInfoDAO.prototype.dataFilter = (req, res)=>{
 }
 
 GetInfoDAO.prototype.newClientPage = (req, res)=>{
-    res.render('newClient.ejs');
+    res.render('cadastro.ejs');
 }
 GetInfoDAO.prototype.editClientPage = (req, res)=>{
-    res.render('edit.ejs', {data : req.body});
+    res.render('editar.ejs', {data : req.body});
 }
 
 module.exports = ()=>{

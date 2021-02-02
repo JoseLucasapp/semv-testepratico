@@ -13,4 +13,16 @@ module.exports = (route)=>{
     ],(req, res)=>{
         route.app.controllers.index.postInfo(route, req, res);
     });
+    route.post('/edit', (req, res)=>{
+        route.app.controllers.index.editClientPage(route, req, res);
+    });
+    route.post('/filter', (req,res)=>{
+        route.app.controllers.index.getInfoWithFilter(route, req, res);
+    });
+    route.post('/update', (req,res)=>{
+        route.app.controllers.index.putInfo(route, req, res);
+    });
+    route.post('/delete',(req,res)=>{
+        route.app.controllers.index.deleteInfo(route, req, res);
+    });
 }
