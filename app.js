@@ -11,10 +11,10 @@ app.use(bodyParser.json());
 app.set('view engine', ejs);
 app.use(express.static('./public/'));
 
-consign({cwd: process.cwd()})
-    .include('app/controllers')
-    .then('app/routes')
-    .then('app/models')
+consign()
+    .include('./app/controllers')
+    .then('./app/routes')
+    .then('./app/models')
     .into(app);
 
 app.listen(PORT);
