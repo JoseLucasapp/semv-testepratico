@@ -11,10 +11,7 @@ app.use(bodyParser.json());
 app.set('view engine', ejs);
 app.use(express.static('./public/'));
 
-consign()
-    .include('./app/controllers')
-    .then('./app/routes')
-    .then('./app/models')
-    .into(app);
+require('./app/routes/get')(app)
+require('./app/routes/post')(app)
 
 app.listen(PORT);
